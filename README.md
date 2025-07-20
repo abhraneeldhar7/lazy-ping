@@ -1,92 +1,117 @@
-# Lazy Ping
+# Lazy Ping - Automated API Endpoint Pinger
 ![thumbnail](./public/assets/landingPage-d9ac)
 ## 🗂️ Description
 
-Lazy Ping is a web application designed to monitor and ping API endpoints at regular intervals. The project aims to provide a simple and efficient way to check the status of multiple endpoints, helping developers and teams ensure their APIs are functioning correctly. This project is ideal for developers, DevOps teams, and anyone responsible for maintaining API endpoints.
+Lazy Ping is an open-source application designed to automate the process of pinging API endpoints at regular intervals. The application allows users to create projects, add endpoints, and monitor their status. It leverages Supabase for database operations and NextAuth for authentication. This project is ideal for developers and teams who need to ensure their APIs are always responsive.
+
+The application provides a user-friendly interface for managing projects and endpoints, making it easy to set up and monitor API pings. With its automated pinging feature, users can focus on other tasks while Lazy Ping ensures their APIs are up and running.
 
 ## ✨ Key Features
 
 ### **Core Features**
-- **Endpoint Management**: Add, edit, and delete API endpoints to monitor.
-- **Automated Pinging**: Endpoints are pinged at regular intervals to check their status.
-- **Status Monitoring**: View the status of each endpoint, including successful pings and failures.
-- **Alerts and Notifications**: Receive notifications for endpoint failures or changes in status.
+- **Project Management**: Create and manage projects with ease.
+- **Endpoint Management**: Add, edit, and delete API endpoints for each project.
+- **Automated Pinging**: Schedule pings to API endpoints at regular intervals.
+- **Status Monitoring**: Monitor the status of your API endpoints.
 
-### **User Interface**
-- **Dashboard**: A user-friendly dashboard to view and manage all endpoints.
-- **Project Management**: Organize endpoints by projects for better management.
+### **Authentication and Authorization**
+- **NextAuth Integration**: Secure authentication and authorization for users.
+
+### **Database Operations**
+- **Supabase Integration**: Utilizes Supabase for efficient database operations.
 
 ## 🗂️ Folder Structure
 
 ```mermaid
 graph TD;
-  src-->app;
-  src-->components;
-  src-->lib;
-  src-->utils;
-  app-->api;
-  app-->pages;
-  components-->endpointDisplay;
-  components-->landingpage;
-  components-->sessionWrapper;
-  lib-->store.ts;
-  lib-->types.ts;
-  lib-->utils.ts;
+src-->app;
+src-->components;
+src-->lib;
+src-->utils;
+app-->api;
+app-->dashboard;
+app-->layout;
+app-->page;
+components-->endpointDisplay;
+components-->footer;
+components-->initPage;
+components-->landingpage;
+components-->sessionWrapper;
+lib-->store;
+lib-->types;
+lib-->utils;
+utils-->supabase;
 ```
 
 ## 🛠️ Tech Stack
 
 ![Next.js](https://img.shields.io/badge/Next.js-000?logo=next.js&logoColor=white&style=for-the-badge)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178c6?logo=typescript&logoColor=white&style=for-the-badge)
-![Supabase](https://img.shields.io/badge/Supabase-3EC7F7?logo=supabase&logoColor=white&style=for-the-badge)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwind-css&logoColor=white&style=for-the-badge)
-![NextAuth](https://img.shields.io/badge/NextAuth-3ECD59?logo=next-auth&logoColor=white&style=for-the-badge)
+![Supabase](https://img.shields.io/badge/Supabase-3EC85B?logo=supabase&logoColor=white&style=for-the-badge)
+![NextAuth](https://img.shields.io/badge/NextAuth-6c5ce7?logo=nextauth&logoColor=white&style=for-the-badge)
+![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=white&style=for-the-badge)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white&style=for-the-badge)
 
 ## ⚙️ Setup Instructions
 
-To run Lazy Ping locally, follow these steps:
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
 
-1. **Clone the Repository**:
+### Installation
+1. Clone the repository:
    ```bash
-   git clone https://github.com/abhraneeldhar7/lazy-ping.git
-   ```
-2. **Install Dependencies**:
+git clone https://github.com/abhraneeldhar7/lazy-ping.git
+```
+2. Navigate to the project directory:
    ```bash
-   cd lazy-ping
-   npm install
-   ```
-3. **Configure Environment Variables**:
-   - Create a `.env` file in the root directory.
-   - Add your Supabase and NextAuth credentials.
-
-4. **Start the Development Server**:
+cd lazy-ping
+```
+3. Install dependencies:
    ```bash
-   npm run dev
-   ```
-5. **Access the Application**:
-   Open your browser and navigate to `http://localhost:3000`.
+npm install
+```
+   or
+   ```bash
+yarn install
+```
+4. Start the application:
+   ```bash
+npm run dev
+```
+   or
+   ```bash
+yarn dev
+```
 
-## 🤖 GitHub Actions
+## 📈 GitHub Actions
 
-The project uses a GitHub Actions workflow to ping an endpoint every 10 minutes. This is defined in `.github/workflows/ping.yml`.
+The project utilizes a GitHub Actions workflow to schedule pings to the application's API endpoint every 10 minutes. This ensures that the application remains active and functional.
 
 ```yml
-name: Ping Endpoint
+name: Ping API
+
 on:
   schedule:
     - cron:  */10 * * * *
+
 jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Ping Endpoint
-        run: curl https://example.com/ping
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Ping API
+        run: |
+          curl -X GET \
+          https://lazy-ping.vercel.app/api/ping \
+          -H 'Content-Type: application/json'
 ```
 
-## 📝 Additional Information
+## 🤝 Further Assistance
 
-- **Supabase Functions**: Server-side functions interacting with the Supabase database are located in `app/actions/supabaseFunctions.ts`.
-- **Endpoint Display**: The component for displaying and managing endpoints is in `components/endpointDisplay/endpointDisplay.tsx`.
+For any questions or further assistance, feel free to reach out to the project maintainer or open an issue on the GitHub repository.
 
 
 
