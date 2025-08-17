@@ -1,95 +1,78 @@
-# Lazy Ping - Automated API Endpoint Pinger
+# Lazy Ping - Automated Endpoint Pinger
 ![thumbnail](./public/assets/landingPage-d9ac)
 ## 🗂️ Description
 
-Lazy Ping is an open-source application designed to automate the process of pinging API endpoints at regular intervals. The application allows users to create projects, add endpoints, and monitor their status. It leverages Supabase for database operations and NextAuth for authentication. This project is ideal for developers and teams who need to ensure their APIs are always responsive.
+Lazy Ping is a Next.js project that automates the process of pinging endpoints at regular intervals. It's designed for developers and DevOps teams who want to monitor their endpoints' uptime and performance. The project uses Supabase for database management and NextAuth for authentication.
 
-The application provides a user-friendly interface for managing projects and endpoints, making it easy to set up and monitor API pings. With its automated pinging feature, users can focus on other tasks while Lazy Ping ensures their APIs are up and running.
+The application allows users to create projects, add endpoints, and configure ping intervals. It also provides features like authentication, authorization, and logging. The project aims to provide a simple and efficient way to monitor endpoint performance and receive notifications when issues arise.
 
 ## ✨ Key Features
 
 ### **Core Features**
-- **Project Management**: Create and manage projects with ease.
-- **Endpoint Management**: Add, edit, and delete API endpoints for each project.
-- **Automated Pinging**: Schedule pings to API endpoints at regular intervals.
-- **Status Monitoring**: Monitor the status of your API endpoints.
 
-### **Authentication and Authorization**
-- **NextAuth Integration**: Secure authentication and authorization for users.
+* **Endpoint Management**: Create, edit, and delete endpoints for projects
+* **Project Management**: Create, edit, and delete projects
+* **Ping Automation**: Automatically ping endpoints at configured intervals
+* **Authentication**: Secure authentication using NextAuth
+* **Authorization**: Role-based access control for project and endpoint management
 
-### **Database Operations**
-- **Supabase Integration**: Utilizes Supabase for efficient database operations.
+### **UI Features**
+
+* **Dashboard**: View project and endpoint information
+* **Endpoint Display**: Display endpoint information, including ping history and logs
+* **How-to-use Section**: Guide users on how to use the application
+* **Pricing Plans Section**: Display pricing plans and features
 
 ## 🗂️ Folder Structure
 
 ```mermaid
 graph TD;
-src-->app;
-src-->components;
-src-->lib;
-src-->utils;
-app-->api;
-app-->dashboard;
-app-->layout;
-app-->page;
-components-->endpointDisplay;
-components-->footer;
-components-->initPage;
-components-->landingpage;
-components-->sessionWrapper;
-lib-->store;
-lib-->types;
-lib-->utils;
-utils-->supabase;
+  src-->app;
+  src-->components;
+  src-->lib;
+  app-->api;
+  app-->dashboard;
+  app-->layout;
+  components-->endpointDisplay;
+  components-->footer;
+  components-->initPage;
+  components-->landingpage;
+  components-->sessionWrapper;
+  lib-->store;
+  lib-->types;
+  lib-->utils;
 ```
 
 ## 🛠️ Tech Stack
 
 ![Next.js](https://img.shields.io/badge/Next.js-000?logo=next.js&logoColor=white&style=for-the-badge)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178c6?logo=typescript&logoColor=white&style=for-the-badge)
-![Supabase](https://img.shields.io/badge/Supabase-3EC85B?logo=supabase&logoColor=white&style=for-the-badge)
-![NextAuth](https://img.shields.io/badge/NextAuth-6c5ce7?logo=nextauth&logoColor=white&style=for-the-badge)
-![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=white&style=for-the-badge)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white&style=for-the-badge)
+![Supabase](https://img.shields.io/badge/Supabase-4ea94b?logo=supabase&logoColor=white&style=for-the-badge)
+![NextAuth](https://img.shields.io/badge/NextAuth-6c5ce7?logo=next-auth&logoColor=white&style=for-the-badge)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwind-css&logoColor=white&style=for-the-badge)
 
 ## ⚙️ Setup Instructions
 
 ### Prerequisites
-- Node.js (v16 or higher)
-- npm or yarn
+
+* Node.js (v16 or higher)
+* npm or yarn
+* Supabase account
 
 ### Installation
-1. Clone the repository:
-   ```bash
-git clone https://github.com/abhraneeldhar7/lazy-ping.git
-```
-2. Navigate to the project directory:
-   ```bash
-cd lazy-ping
-```
-3. Install dependencies:
-   ```bash
-npm install
-```
-   or
-   ```bash
-yarn install
-```
-4. Start the application:
-   ```bash
-npm run dev
-```
-   or
-   ```bash
-yarn dev
-```
+
+1. Git clone the repository: `git clone https://github.com/abhraneeldhar7/lazy-ping.git`
+2. Install dependencies: `npm install` or `yarn install`
+3. Create a Supabase account and create a new project
+4. Create a `.env` file and add your Supabase credentials
+5. Run the application: `npm run dev` or `yarn dev`
 
 ## 📈 GitHub Actions
 
-The project utilizes a GitHub Actions workflow to schedule pings to the application's API endpoint every 10 minutes. This ensures that the application remains active and functional.
+The project uses a GitHub Actions workflow to ping an endpoint every 10 minutes. The workflow is defined in `.github/workflows/ping.yml`.
 
 ```yml
-name: Ping API
+name: Ping Endpoint
 
 on:
   schedule:
@@ -102,16 +85,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Ping API
+      - name: Run ping script
         run: |
-          curl -X GET \
-          https://lazy-ping.vercel.app/api/ping \
-          -H 'Content-Type: application/json'
+          curl -X POST \
+          https://<your-endpoint-url>/api/ping \
+          -H 'Content-Type: application/json' \
+          -d '{}'
 ```
 
-## 🤝 Further Assistance
+## 📝 Logging
 
-For any questions or further assistance, feel free to reach out to the project maintainer or open an issue on the GitHub repository.
+The project uses logging to track ping events and errors. Logs are stored in the Supabase database.
+
+## 🔒 Security
+
+The project uses NextAuth for authentication and authorization. It also uses HTTPS to encrypt data in transit.
 
 
 
