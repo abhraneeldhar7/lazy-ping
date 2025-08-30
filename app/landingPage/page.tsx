@@ -7,7 +7,12 @@ import { useEffect, useState } from "react"
 
 
 export default function LandingPage() {
-    const [showSidebar, setShowSidebar] = useState(window.screen.width > 500);
+    const [showSidebar, setShowSidebar] = useState(false);
+    useEffect(() => {
+        if (window.screen.width > 500) {
+            setShowSidebar(true)
+        }
+    }, [])
 
 
     return (<div className="min-h-[100vh] h-[100%] bg-[#F0F8FF] w-[100%] overflow-hidden">
