@@ -20,7 +20,7 @@ export default function LandingPage() {
             <h1 className="font-[ClashGrotesk] text-[50px] font-[500] leading-[1.2em] text-[center]">YOUR SERVERS</h1>
 
             <div className="relative h-[fit-content] w-[100%] max-w-[500px] mx-[15px] overflow-x-[hidden] flex flex-col">
-                <Image src="/hero/smolpad.png" height={200} width={200} alt="" unoptimized className="h-[100%] w-[100%] object-contain rotate-[-21deg]" />
+                <Image src="/hero/smolpad.png" height={200} width={200} alt="" unoptimized className="h-[100%] w-[100%] object-contain" />
 
                 <Image src="/hero/screen1.png" height={200} width={200} className={styles.heroScreen1} alt="" unoptimized />
 

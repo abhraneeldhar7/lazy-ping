@@ -6,7 +6,7 @@
     width: 100%;
     position: absolute;
     object-fit: contain;
-    transform: rotate(-21deg);
+    /* transform: rotate(-21deg); */
     transition: all 0.3s;
     animation: ripple 3s infinite;
 }
@@ -37,21 +37,21 @@
 
 @keyframes ripple {
     0% {
-        transform: rotate(-21deg) translateY(0px);
+        transform: translateY(0px);
     }
 
     10% {
-        transform: rotate(-21deg) translateY(-10px);
+        transform: translateY(-10px);
 
     }
 
     20% {
-        transform: rotate(-21deg) translateY(0px);
+        transform: translateY(0px);
 
     }
 
     100% {
-        transform: rotate(-21deg) translateY(0px);
+        transform: translateY(0px);
     }
 }
 
