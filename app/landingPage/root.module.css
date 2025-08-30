@@ -1,0 +1,130 @@
+.heroScreen1,
+.heroScreen2,
+.heroScreen3,
+.heroScreen4 {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    object-fit: contain;
+    transform: rotate(-21deg);
+    transition: all 0.3s;
+    animation: ripple 3s infinite;
+}
+
+
+.heroScreen1 {
+    top: -3%;
+    left: -3%;
+}
+
+.heroScreen2 {
+    top: -5%;
+    left: -5%;
+    animation-delay: 0.2s;
+}
+
+.heroScreen3 {
+    top: -10%;
+    left: -10%;
+    animation-delay: 0.3s;
+}
+
+.heroScreen4 {
+    top: -15%;
+    left: -15%;
+    animation-delay: 0.4s;
+}
+
+@keyframes ripple {
+    0% {
+        transform: rotate(-21deg) translateY(0px);
+    }
+
+    10% {
+        transform: rotate(-21deg) translateY(-10px);
+
+    }
+
+    20% {
+        transform: rotate(-21deg) translateY(0px);
+
+    }
+
+    100% {
+        transform: rotate(-21deg) translateY(0px);
+    }
+}
+
+.sideBar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 15px;
+    height: 100%;
+}
+
+.sidebarOption {
+    font-size: 30px;
+    font-family: "Poppins";
+    transition: all 0.3s;
+    opacity: 0.4;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    animation: h1SlideIn;
+}
+
+.sidebarOption svg {
+    overflow: hidden;
+    width: 0px;
+    transition: all 0.3s;
+}
+
+.sidebarOption:hover {
+    padding-left: 10px;
+}
+
+.sidebarOption:hover svg {
+    width: 20px;
+}
+
+.sideBar:hover .sidebarOption {
+    opacity: 1;
+    transform: translateX(5px);
+}
+
+
+
+.sideBar .sidebarOption:nth-child(1) {
+    animation-duration: 0.3s;
+}
+
+.sideBar .sidebarOption:nth-child(2) {
+    animation-duration: 0.5s;
+}
+
+.sideBar .sidebarOption:nth-child(3) {
+    animation-duration: 0.7s;
+}
+
+.sideBar .sidebarOption:nth-child(4) {
+    animation-duration: 0.9s;
+}
+
+@keyframes h1SlideIn {
+    0% {
+        transform: translateX(-100%);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(0%);
+        opacity: 0.4;
+    }
+}

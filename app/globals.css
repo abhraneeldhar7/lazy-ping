@@ -118,6 +118,12 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: 'ClashGrotesk';
+  src: url('/fonts/ClashGrotesk-Variable.ttf') format('truetype');
+  font-style: normal;
+  font-display: swap;
+}
 
 
 @layer base {
