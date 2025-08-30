@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lazy Ping - Automated Endpoint Pinger
+![thumbnail](./public/assets/landingPage-d9ac)
+## 🗂️ Description
 
-## Getting Started
+Lazy Ping is a Next.js project that automates the process of pinging endpoints at regular intervals. It's designed for developers and DevOps teams who want to monitor their endpoints' uptime and performance. The project uses Supabase for database management and NextAuth for authentication.
 
-First, run the development server:
+The application allows users to create projects, add endpoints, and configure ping intervals. It also provides features like authentication, authorization, and logging. The project aims to provide a simple and efficient way to monitor endpoint performance and receive notifications when issues arise.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Key Features
+
+### **Core Features**
+
+* **Endpoint Management**: Create, edit, and delete endpoints for projects
+* **Project Management**: Create, edit, and delete projects
+* **Ping Automation**: Automatically ping endpoints at configured intervals
+* **Authentication**: Secure authentication using NextAuth
+* **Authorization**: Role-based access control for project and endpoint management
+
+### **UI Features**
+
+* **Dashboard**: View project and endpoint information
+* **Endpoint Display**: Display endpoint information, including ping history and logs
+* **How-to-use Section**: Guide users on how to use the application
+* **Pricing Plans Section**: Display pricing plans and features
+
+## 🗂️ Folder Structure
+
+```mermaid
+graph TD;
+  src-->app;
+  src-->components;
+  src-->lib;
+  app-->api;
+  app-->dashboard;
+  app-->layout;
+  components-->endpointDisplay;
+  components-->footer;
+  components-->initPage;
+  components-->landingpage;
+  components-->sessionWrapper;
+  lib-->store;
+  lib-->types;
+  lib-->utils;
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+![Next.js](https://img.shields.io/badge/Next.js-000?logo=next.js&logoColor=white&style=for-the-badge)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178c6?logo=typescript&logoColor=white&style=for-the-badge)
+![Supabase](https://img.shields.io/badge/Supabase-4ea94b?logo=supabase&logoColor=white&style=for-the-badge)
+![NextAuth](https://img.shields.io/badge/NextAuth-6c5ce7?logo=next-auth&logoColor=white&style=for-the-badge)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwind-css&logoColor=white&style=for-the-badge)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ⚙️ Setup Instructions
 
-## Learn More
+### Prerequisites
 
-To learn more about Next.js, take a look at the following resources:
+* Node.js (v16 or higher)
+* npm or yarn
+* Supabase account
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Git clone the repository: `git clone https://github.com/abhraneeldhar7/lazy-ping.git`
+2. Install dependencies: `npm install` or `yarn install`
+3. Create a Supabase account and create a new project
+4. Create a `.env` file and add your Supabase credentials
+5. Run the application: `npm run dev` or `yarn dev`
 
-## Deploy on Vercel
+## 📈 GitHub Actions
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The project uses a GitHub Actions workflow to ping an endpoint every 10 minutes. The workflow is defined in `.github/workflows/ping.yml`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```yml
+name: Ping Endpoint
+
+on:
+  schedule:
+    - cron:  */10 * * * *
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run ping script
+        run: |
+          curl -X POST \
+          https://<your-endpoint-url>/api/ping \
+          -H 'Content-Type: application/json' \
+          -d '{}'
+```
+
+## 📝 Logging
+
+The project uses logging to track ping events and errors. Logs are stored in the Supabase database.
+
+## 🔒 Security
+
+The project uses NextAuth for authentication and authorization. It also uses HTTPS to encrypt data in transit.
+
+
+
+<br><br>
+<div align="center">
+<img src="https://avatars.githubusercontent.com/u/89008279?v=4" width="120" />
+<h3>Abhra the Neel</h3>
+<p>Full-stack developer with expertise in web, Android, and server-side development. Most projects are private due to being production code.</p>
+</div>
+<br>
+<p align="right">
+<img src="https://gitfull.vercel.app/appLogo.png" width="20"/>  <a href="https://gitfull.vercel.app">Made by GitFull</a>
+</p>
+    
