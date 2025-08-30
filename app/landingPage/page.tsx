@@ -4,6 +4,8 @@ import styles from "./root.module.css"
 import { ChevronRight, Cross, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react"
+import Link from "next/link"
+import Footer from "@/components/footer"
 
 
 export default function LandingPage() {
@@ -34,12 +36,12 @@ export default function LandingPage() {
 
 
 
-        <div className="h-[100vh] w-[100%] flex flex-col items-center justify-center">
+        <div className="h-[90vh] w-[100%] flex flex-col items-center py-[30px]">
 
             <h1 className="font-[ClashGrotesk] text-[60px] font-[500] leading-[1.2em] text-[center]">NEVER LET</h1>
             <h1 className="font-[ClashGrotesk] text-[50px] font-[500] leading-[1.2em] text-[center]">YOUR SERVERS</h1>
 
-            <div className="relative h-[fit-content] w-[100%] max-w-[500px] mx-[15px] overflow-x-[hidden] flex flex-col">
+            <div className="relative h-[fit-content] w-[100%] max-w-[500px] mx-[15px] overflow-x-[hidden] flex flex-col transition-all ease-in duraiton-300 hover:translate-y-[7px]">
                 <Image src="/hero/smolpad.png" height={200} width={200} alt="" unoptimized className="h-[100%] w-[100%] object-contain" />
 
                 <Image src="/hero/screen1.png" height={200} width={200} className={styles.heroScreen1} alt="" unoptimized />
@@ -51,23 +53,25 @@ export default function LandingPage() {
                 <Image src="/hero/screen4.png" height={200} width={200} className={styles.heroScreen4} alt="" unoptimized />
             </div>
             <div className="relative translate-y-[-40%] w-[100%] max-w-[500px] mx-[20px]">
-                <div className="w-[100%] h-[7px] absolute top-[50%] translate-y-[-50%] z-[1] bg-[linear-gradient(90deg,transparent_0%,rgba(255,37,37,1)_10%,rgba(255,37,37,1)_90%,transparent_100%)]"></div>
-                <h1 className="font-[ClashGrotesk] text-[70px] text-center font-[500] opacity-[0.8]">SLEEP</h1>
+                <div className="w-[100%] h-[8px] absolute top-[50%] translate-y-[-50%] z-[1] bg-[linear-gradient(90deg,transparent_0%,rgba(255,37,37,1)_10%,rgba(255,37,37,1)_90%,transparent_100%)]"></div>
+                <h1 className="font-[ClashGrotesk] text-[65px] leading-[1em] text-center font-[500] opacity-[0.8]">SLEEP</h1>
             </div>
 
             <div className="items-center flex gap-[10px]">
                 <Button className="rounded-[30px] text-[20px] py-[22px] px-[20px]">
                     Activate
                 </Button>
-                <Button variant="outline" className="rounded-[30px] text-[20px] py-[22px] px-[20px]">
-                    Open source
-                </Button>
+                <Link href="https://github.com/abhraneeldhar7/lazy-ping" target="_blank">
+                    <Button variant="outline" className="rounded-[30px] text-[20px] py-[22px] px-[20px]">
+                        Open source
+                    </Button>
+                </Link>
             </div>
         </div>
 
         <div className="h-[100px]"></div>
 
-
+        <Footer />
 
     </div>)
 }

@@ -1,5 +1,5 @@
 # Lazy Ping - Automated Endpoint Pinger
-![thumbnail](./public/assets/landingPage-d9ac)
+![thumbnail](./public/opengraph-image.png)
 ## 🗂️ Description
 
 Lazy Ping is a Next.js project that automates the process of pinging endpoints at regular intervals. It's designed for developers and DevOps teams who want to monitor their endpoints' uptime and performance. The project uses Supabase for database management and NextAuth for authentication.
