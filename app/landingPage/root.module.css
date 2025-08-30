@@ -70,7 +70,6 @@
     font-size: 30px;
     font-family: "ClashGrotesk";
     font-weight: 500;
-    transition: all 0.3s;
     opacity: 0.4;
     cursor: pointer;
     -webkit-user-select: none;
@@ -80,8 +79,8 @@
     display: flex;
     align-items: center;
     gap: 10px;
-
     animation: h1SlideIn;
+    transition: all 0.3s;
 }
 
 .sidebarOption svg {
@@ -92,16 +91,14 @@
 
 .sidebarOption:hover {
     padding-left: 10px;
+    opacity: 1;
 }
 
 .sidebarOption:hover svg {
     width: 20px;
 }
 
-.sideBar:hover .sidebarOption {
-    /* opacity: 1; */
-    transform: translateX(5px);
-}
+
 
 
 .sidebar svg:nth-child(1) {
@@ -127,27 +124,29 @@
 @keyframes h1SlideIn {
     0% {
         transform: translateX(-100%);
-        opacity: 1;
+        /* opacity: 1; */
     }
 
     100% {
         transform: translateX(0%);
-        opacity: 0.4;
+        /* opacity: 0.4; */
     }
 }
 
-@media(max-width:500px){
-    .sidebarOption{
+@media(max-width:500px) {
+    .sidebarOption {
+        transition: all 0.3s;
         opacity: 1;
     }
+
     .sidebarOption:hover {
         padding-left: 0px;
     }
-    
+
     .sidebarOption:hover svg {
         width: 0px;
     }
-    
+
     .sideBar:hover .sidebarOption {
         transform: translateX(0px);
     }
