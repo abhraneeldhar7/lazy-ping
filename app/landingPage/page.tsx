@@ -1,17 +1,32 @@
+"use client"
 import Image from "next/image"
 import styles from "./root.module.css"
-import { ChevronRight } from "lucide-react"
+import { ChevronRight, Cross, X } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { useEffect, useState } from "react"
 
 
 export default function LandingPage() {
+    const [showSidebar, setShowSidebar] = useState(window.screen.width > 500);
+
+
     return (<div className="min-h-[100vh] h-[100%] bg-[#F0F8FF] w-[100%] overflow-hidden">
 
-        {/* <div className={styles.sideBar}>
-            <h1 className={styles.sidebarOption}>Activate <ChevronRight size={20}/></h1>
-            <h1 className={styles.sidebarOption}>Guides <ChevronRight size={20}/></h1>
-            <h1 className={styles.sidebarOption}>About <ChevronRight size={20}/></h1>
-            <h1 className={styles.sidebarOption}>Best Practices <ChevronRight size={20}/></h1>
-        </div> */}
+        <div className={`${styles.sideBar} ${showSidebar && "backdrop-blur-[50px]"}`}>
+            {!showSidebar &&
+                <Image src="/appLogo.png" height={40} width={40} alt="" unoptimized className="fade-in transition-all duration-200 hover:scale-[0.92]" onClick={() => setShowSidebar(true)} />
+            }
+
+            {showSidebar && <>
+                <X className="transition-all duration-300 opacity-[0.4] hover:opacity-[1] hover:rotate-[90deg]" size={35} onClick={() => { setShowSidebar(false) }} />
+
+                <h1 className={styles.sidebarOption}>Activate <ChevronRight size={20} /></h1>
+                <h1 className={styles.sidebarOption}>Guides <ChevronRight size={20} /></h1>
+                <h1 className={styles.sidebarOption}>About <ChevronRight size={20} /></h1>
+                <h1 className={styles.sidebarOption}>Best Practices <ChevronRight size={20} /></h1>
+            </>}
+        </div>
+
 
 
         <div className="h-[100vh] w-[100%] flex flex-col items-center justify-center">
@@ -30,13 +45,24 @@ export default function LandingPage() {
 
                 <Image src="/hero/screen4.png" height={200} width={200} className={styles.heroScreen4} alt="" unoptimized />
             </div>
-            <div className="relative translate-y-[-40%]  w-[100%] max-w-[500px] mx-[15px]">
+            <div className="relative translate-y-[-40%] w-[100%] max-w-[500px] mx-[20px]">
                 <div className="w-[100%] h-[7px] absolute top-[50%] translate-y-[-50%] z-[1] bg-[linear-gradient(90deg,transparent_0%,rgba(255,37,37,1)_10%,rgba(255,37,37,1)_90%,transparent_100%)]"></div>
-                <h1 className="font-[Poppins] text-[70px] text-center font-[500] opacity-[0.8]">SLEEP</h1>
+                <h1 className="font-[ClashGrotesk] text-[70px] text-center font-[500] opacity-[0.8]">SLEEP</h1>
             </div>
 
-
-
+            <div className="items-center flex gap-[10px]">
+                <Button className="rounded-[30px] text-[20px] py-[22px] px-[20px]">
+                    Activate
+                </Button>
+                <Button variant="outline" className="rounded-[30px] text-[20px] py-[22px] px-[20px]">
+                    Open source
+                </Button>
+            </div>
         </div>
+
+        <div className="h-[100px]"></div>
+
+
+
     </div>)
 }
